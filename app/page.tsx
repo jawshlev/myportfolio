@@ -112,9 +112,9 @@ export default function Portfolio() {
                   className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none"
                   data-cursor="text"
                 >
-                  JOHN
+                  JOSH
                   <br />
-                  DOE
+                  LEVANO
                 </h1>
                 <p className="text-xl md:text-2xl text-black/70 font-medium" data-cursor="text">
                   Full Stack Developer & UI/UX Designer
