@@ -117,11 +117,10 @@ export default function Portfolio() {
                   LEVANO
                 </h1>
                 <p className="text-xl md:text-2xl text-black/70 font-medium" data-cursor="text">
-                  Full Stack Developer & UI/UX Designer
+                  Full Stack Developer & Creative Technologist
                 </p>
                 <p className="text-lg text-black/60 max-w-lg leading-relaxed mx-auto lg:mx-0" data-cursor="text">
-                  I create beautiful, functional, and user-centered digital experiences that solve real-world problems
-                  and bring ideas to life through code.
+                I am passionate about exploring the intersection of art and technology by designing user-centered applications that blend aesthetic intention with functional innovation.
                 </p>
               </div>
               <div className="flex justify-center lg:justify-start">
