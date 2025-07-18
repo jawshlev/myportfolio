@@ -14,14 +14,19 @@ export default function Magnetic({ children, className }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
-  const handleMouse = (e: React.MouseEvent) => {
-    const { clientX, clientY } = e
-    if (!ref.current) return
+  let frameId: number | null = null
 
-    const { height, width, left, top } = ref.current.getBoundingClientRect()
-    const middleX = clientX - (left + width / 2)
-    const middleY = clientY - (top + height / 2)
-    setPosition({ x: middleX * 0.1, y: middleY * 0.1 })
+  const handleMouse = (e: React.MouseEvent) => {
+    if (!ref.current) return
+    if (frameId) cancelAnimationFrame(frameId)
+
+    frameId = requestAnimationFrame(() => {
+      const { clientX, clientY } = e
+      const { height, width, left, top } = ref.current!.getBoundingClientRect()
+      const middleX = clientX - (left + width / 2)
+      const middleY = clientY - (top + height / 2)
+      setPosition({ x: middleX * 0.1, y: middleY * 0.1 })
+    })
   }
 
   const reset = () => {

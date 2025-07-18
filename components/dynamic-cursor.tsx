@@ -3,15 +3,24 @@
 import { useEffect, useState } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
 
+function debounce<T extends (...args: any[]) => void>(fn: T, delay: number) {
+  let timeoutId: ReturnType<typeof setTimeout>
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn(...args), delay)
+  }
+}
+
 interface CursorState {
   size: number
   variant: "default" | "text" | "button" | "link" | "image"
   mixBlendMode: "normal" | "difference"
 }
 
+
 export default function DynamicCursor() {
   const [cursorState, setCursorState] = useState<CursorState>({
-    size: 32,
+    size: 36,
     variant: "default",
     mixBlendMode: "normal",
   })
@@ -52,6 +61,8 @@ export default function DynamicCursor() {
       const target = e.target as HTMLElement
       const cursorType = target.getAttribute("data-cursor")
 
+      if (cursorType === cursorState.variant) return
+
       if (cursorType === "text") {
         const target = e.target as HTMLElement
         // Only change size for big titles (h1, h2 elements)
@@ -65,7 +76,7 @@ export default function DynamicCursor() {
         } else {
           // For other text elements, keep default size but apply styling
           setCursorState({
-            size: 32,
+            size: 36,
             variant: "text",
             mixBlendMode: "difference",
           })
@@ -121,7 +132,7 @@ export default function DynamicCursor() {
         })
       } else {
         setCursorState({
-          size: 32,
+          size: 36,
           variant: "default",
           mixBlendMode: "normal",
         })
@@ -130,23 +141,25 @@ export default function DynamicCursor() {
 
     const handleMouseOut = () => {
       setCursorState({
-        size: 32,
+        size: 36,
         variant: "default",
         mixBlendMode: "normal",
       })
     }
 
+    const debouncedMouseOver = debounce(handleMouseOver, 30)
+
     document.addEventListener("mousemove", moveCursor)
     document.addEventListener("mouseenter", handleMouseEnter)
     document.addEventListener("mouseleave", handleMouseLeave)
-    document.addEventListener("mouseover", handleMouseOver)
+    document.addEventListener("mouseover", debouncedMouseOver)
     document.addEventListener("mouseout", handleMouseOut)
 
     return () => {
       document.removeEventListener("mousemove", moveCursor)
       document.removeEventListener("mouseenter", handleMouseEnter)
       document.removeEventListener("mouseleave", handleMouseLeave)
-      document.removeEventListener("mouseover", handleMouseOver)
+      document.removeEventListener("mouseover", debouncedMouseOver)
       document.removeEventListener("mouseout", handleMouseOut)
     }
   }, [cursorX, cursorY, cursorState.size, isMobile])
@@ -212,8 +225,8 @@ export default function DynamicCursor() {
           ...getCursorVariants(),
         }}
         initial={{
-          width: 32,
-          height: 32,
+          width: 36,
+          height: 36,
           backgroundColor: "black",
         }}
         transition={{

@@ -1,6 +1,8 @@
 "use client"
 
-import { Github, Linkedin, Mail, ExternalLink } from "lucide-react"
+import { SiGithub, SiLinkedin } from "react-icons/si";
+import { HiOutlineMail } from "react-icons/hi";
+import { FiExternalLink } from "react-icons/fi";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -8,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { useEffect, useState, useRef } from "react"
 import Magnetic from "@/components/magnetic"
 import DynamicCursor from "@/components/dynamic-cursor"
+import { MagnetIcon } from "lucide-react";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about")
@@ -86,7 +89,7 @@ export default function Portfolio() {
           />
 
           {navItems.map((item) => (
-            <Magnetic key={item.id}>
+            <div key={item.id}>
               <button
                 data-section={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -96,13 +99,13 @@ export default function Portfolio() {
               >
                 {item.label}
               </button>
-            </Magnetic>
+            </div>
           ))}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center px-12 py-24">
+      <section className="min-h-screen flex items-center px-12 lg:px-36 py-24">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left side - Text content */}
@@ -120,7 +123,7 @@ export default function Portfolio() {
                   Full Stack Developer & Creative Technologist
                 </p>
                 <p className="text-lg text-black/60 max-w-lg leading-relaxed mx-auto lg:mx-0" data-cursor="text">
-                I am passionate about exploring the intersection of art and technology by designing user-centered applications that blend aesthetic intention with functional innovation.
+                Passionate about exploring the intersection of art and technology by designing user-centered applications that blend aesthetic intention with functional innovation.
                 </p>
               </div>
               <div className="flex justify-center lg:justify-start">
@@ -145,7 +148,7 @@ export default function Portfolio() {
                 >
                   <img
                     src="/placeholder.svg?height=480&width=320"
-                    alt="John Doe Portrait"
+                    alt="Josh Levnao Portrait"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -161,51 +164,54 @@ export default function Portfolio() {
       {/* About Me Section */}
       <section id="about" className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold mb-16 text-center tracking-tight" data-cursor="text">
+          <h2 className="text-5xl md:text-6xl font-bold mb-16 text-left tracking-tight" data-cursor="text">
             About Me
           </h2>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <p className="text-lg text-black/80 leading-relaxed" data-cursor="text">
-                I'm a passionate full-stack developer with over 5 years of experience creating digital solutions that
-                bridge the gap between design and functionality. I specialize in React, Next.js, and modern web
-                technologies.
+              I'm a full-stack developer with a creative edge, combining solid React and Next.js skills with a strong eye for design.
+              I've crafted UI for freelance clients and enjoy exploring new technologies to build interfaces that are both functional and visually compelling.
+              Whether building dynamic web apps or compelling interfaces, I bring both precision and play to the work I create.
               </p>
               <p className="text-lg text-black/80 leading-relaxed" data-cursor="text">
-                When I'm not coding, you can find me exploring new technologies, contributing to open-source projects,
-                or enjoying a good cup of coffee while sketching out my next big idea.
+                When I'm not coding, you can find me at a cafe researching technologies to add to my repertoire,
+                volunteering in clean up efforts/general aid for my community, or at the local concert venue.
               </p>
               <div className="flex space-x-4 pt-4">
-                <Magnetic>
+                <div>
+                    <Button
+                      onClick={() => scrollToSection("contact")}
+                      variant="outline"
+                      size="icon"
+                      data-cursor="link"
+                      className="rounded-full border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
+                    >
+                      <SiGithub className="h-5 w-5" />
+                    </Button>
+                </div>
+                <div>
+                    <Button
+                      onClick={() => scrollToSection("contact")}
+                      variant="outline"
+                      size="icon"
+                      data-cursor="link"
+                      className="rounded-full border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
+                    >
+                      <SiLinkedin className="h-5 w-5" />
+                    </Button>
+                </div>
+                <div>
                   <Button
+                    onClick={() => scrollToSection("contact")}
                     variant="outline"
                     size="icon"
                     data-cursor="link"
                     className="rounded-full border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
                   >
-                    <Github className="h-5 w-5" />
+                    <HiOutlineMail className="h-5 w-5" />
                   </Button>
-                </Magnetic>
-                <Magnetic>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    data-cursor="link"
-                    className="rounded-full border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </Button>
-                </Magnetic>
-                <Magnetic>
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    data-cursor="link"
-                    className="rounded-full border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
-                  >
-                    <Mail className="h-5 w-5" />
-                  </Button>
-                </Magnetic>
+                </div>
               </div>
             </div>
             <div className="space-y-8">
@@ -220,18 +226,18 @@ export default function Portfolio() {
                     { skill: "Node.js", years: "4+ years" },
                     { skill: "UI/UX Design", years: "3+ years" },
                   ].map((item, index) => (
-                    <Magnetic key={index}>
+                    <div key={index}>
                       <div className="border border-black/10 rounded-lg p-4 hover:border-black/20 transition-colors cursor-pointer">
                         <h4 className="font-semibold text-base mb-1">{item.skill}</h4>
                         <p className="text-sm text-black/60">{item.years}</p>
                       </div>
-                    </Magnetic>
+                    </div>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-4" data-cursor="text">
+                <h3 className="text-xl font-semibold mb-4">
                   Additional Skills
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -247,11 +253,11 @@ export default function Portfolio() {
                     "GraphQL",
                     "REST APIs",
                   ].map((skill, index) => (
-                    <Magnetic key={index}>
+                    <div key={index}>
                       <span className="px-3 py-1 bg-black/5 border border-black/10 rounded-full text-sm font-medium hover:bg-black/10 transition-colors cursor-pointer">
                         {skill}
                       </span>
-                    </Magnetic>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -272,12 +278,12 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "E-Commerce Platform",
-                description: "A full-stack e-commerce solution built with Next.js, Stripe, and Supabase.",
+                title: "Refor(me)d",
+                description: "An interactive application that utilizes ML Technologies to produce a portrait of the current user in the form of drag and drop windows that the user can use to manipulate their image.",
                 image: "/placeholder.svg?height=200&width=300",
-                tech: ["Next.js", "TypeScript", "Supabase", "Stripe"],
-                github: "#",
-                live: "#",
+                tech: ["Next.js", "Javascript", "TensorFlow"],
+                github: "https://github.com/jawshlev/reformed/",
+                live: "https://jawshlev.github.io/reformed/",
               },
               {
                 title: "Task Management App",
@@ -321,28 +327,33 @@ export default function Portfolio() {
                       ))}
                     </div>
                     <div className="flex space-x-3">
-                      <Magnetic>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          data-cursor="link"
-                          className="border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
-                        >
-                          <Github className="h-4 w-4 mr-2" />
-                          Code
-                        </Button>
-                      </Magnetic>
-                      <Magnetic>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          data-cursor="link"
-                          className="border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
-                        >
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Live
-                        </Button>
-                      </Magnetic>
+                      <div>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            data-cursor="link"
+                            className="border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
+                          >
+                            <SiGithub className="h-4 w-4 mr-2" />
+                            Code
+                          </Button>
+                        </a>
+                      </div>
+                      <div>
+                        <a href={project.live} target="_blank" rel="nonopener noreferrer">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            data-cursor="link"
+                            className="border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
+                          >
+                            <FiExternalLink className="h-4 w-4 mr-2" />
+                            Live
+                          </Button>
+                        </a>
+                        
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -372,28 +383,34 @@ export default function Portfolio() {
               </p>
               <div className="space-y-6">
                 <Magnetic>
-                  <div className="flex items-center space-x-4 cursor-pointer">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                      <Mail className="h-5 w-5 text-white" />
+                  <a href="mailto:joshuadlevano@gmail.com" rel="noopener noreferrer">
+                    <div className="flex items-center space-x-4 cursor-pointer">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                        <HiOutlineMail className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="text-black/80 text-lg">joshuadlevano@gmail.com</span>
                     </div>
-                    <span className="text-black/80 text-lg">john.doe@example.com</span>
-                  </div>
+                  </a>
                 </Magnetic>
                 <Magnetic>
-                  <div className="flex items-center space-x-4 cursor-pointer">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                      <Github className="h-5 w-5 text-white" />
+                  <a href="https://github.com/jawshlev" target="_blank" rel="noopener noreferrer">
+                    <div className="flex items-center space-x-4 cursor-pointer">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                        <SiGithub className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="text-black/80 text-lg">github.com/jawshlev</span>
                     </div>
-                    <span className="text-black/80 text-lg">github.com/johndoe</span>
-                  </div>
+                  </a>
                 </Magnetic>
                 <Magnetic>
-                  <div className="flex items-center space-x-4 cursor-pointer">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                      <Linkedin className="h-5 w-5 text-white" />
+                  <a href="https://www.linkedin.com/in/josh-levano-746908263/" target="_blank" rel="noopener noreferrer">
+                    <div className="flex items-center space-x-4 cursor-pointer">
+                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
+                        <SiLinkedin className="h-5 w-5 text-white" />
+                      </div>
+                      <span className="text-black/80 text-lg">Josh Levano</span>
                     </div>
-                    <span className="text-black/80 text-lg">linkedin.com/in/johndoe</span>
-                  </div>
+                  </a>
                 </Magnetic>
               </div>
             </div>
@@ -440,7 +457,7 @@ export default function Portfolio() {
       <footer className="py-12 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-black/60 text-lg" data-cursor="text">
-            © 2024 John Doe. Built with Next.js and Tailwind CSS.
+            © 2025 Josh Levano. Built with Next.js and Tailwind CSS.
           </p>
         </div>
       </footer>
