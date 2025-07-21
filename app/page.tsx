@@ -5,8 +5,6 @@ import { HiOutlineMail } from "react-icons/hi";
 import { FiExternalLink } from "react-icons/fi";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { useEffect, useState, useRef } from "react"
 import Magnetic from "@/components/magnetic"
 import DynamicCursor from "@/components/dynamic-cursor"
@@ -147,7 +145,7 @@ export default function Portfolio() {
                   data-cursor="image"
                 >
                   <img
-                    src="/placeholder.svg?height=480&width=320"
+                    src="/headshot.jpg?height=480&width=320"
                     alt="Josh Levnao Portrait"
                     className="w-full h-full object-cover"
                   />
@@ -278,23 +276,23 @@ export default function Portfolio() {
                 title: "Refor(me)d",
                 description: "An interactive application that utilizes ML Technologies to produce a portrait of the current user in the form of drag and drop windows that the user can use to manipulate their image.",
                 image: "/reformed.png?height=200&width=300",
-                tech: ["Next.js", "Javascript", "TensorFlow"],
+                tech: ["Next.js", "Javascript", "TensorFlow.js"],
                 github: "https://github.com/jawshlev/reformed/",
                 live: "https://jawshlev.github.io/reformed/",
               },
               {
-                title: "YELLOWMind Course",
+                title: "Yellow Mind Course",
                 description: "A hi-fi mockup of a therapy course made to help those with eating disorders and body dysmorphia. Made for a freelance client.",
-                image: "/YELLOWMindPreview.png?height=200&width=300",
+                image: "/YellowMindPreview.png?height=200&width=300",
                 tech: ["Figma", "Adobe Photoshop",],
                 github: "#",
                 live: "#",
               },
               {
-                title: "Weather Dashboard",
-                description: "A beautiful weather dashboard with location-based forecasts and interactive maps.",
+                title: "Digital Valentine",
+                description: "A digital valentine's day card where the user uses their hand to draw hearts on a blank canvas and uncover hidden poetry, made with Machine Learning Technologies, and P5.js.",
                 image: "/digitalValentine.png?height=200&width=300",
-                tech: ["React", "API Integration", "Chart.js", "Tailwind"],
+                tech: ["Next.js", "Javascript", "Tensorflow.js"],
                 github: "#",
                 live: "#",
               },
