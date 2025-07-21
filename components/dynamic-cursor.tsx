@@ -61,7 +61,6 @@ export default function DynamicCursor() {
       const target = e.target as HTMLElement
       const cursorType = target.getAttribute("data-cursor")
 
-      if (cursorType === cursorState.variant) return
 
       if (cursorType === "text") {
         const target = e.target as HTMLElement
@@ -147,19 +146,18 @@ export default function DynamicCursor() {
       })
     }
 
-    const debouncedMouseOver = debounce(handleMouseOver, 30)
 
     document.addEventListener("mousemove", moveCursor)
     document.addEventListener("mouseenter", handleMouseEnter)
     document.addEventListener("mouseleave", handleMouseLeave)
-    document.addEventListener("mouseover", debouncedMouseOver)
+    document.addEventListener("mouseover", handleMouseOver)
     document.addEventListener("mouseout", handleMouseOut)
 
     return () => {
       document.removeEventListener("mousemove", moveCursor)
       document.removeEventListener("mouseenter", handleMouseEnter)
       document.removeEventListener("mouseleave", handleMouseLeave)
-      document.removeEventListener("mouseover", debouncedMouseOver)
+      document.removeEventListener("mouseover", handleMouseOver)
       document.removeEventListener("mouseout", handleMouseOut)
     }
   }, [cursorX, cursorY, cursorState.size, isMobile])

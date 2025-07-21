@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { useEffect, useState, useRef } from "react"
 import Magnetic from "@/components/magnetic"
 import DynamicCursor from "@/components/dynamic-cursor"
-import { MagnetIcon } from "lucide-react";
+import EmailForm from "@/components/emailForm";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about")
@@ -115,7 +115,7 @@ export default function Portfolio() {
                   className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-none"
                   data-cursor="text"
                 >
-                  JOSH
+                  JOSHUA
                   <br />
                   LEVANO
                 </h1>
@@ -179,9 +179,8 @@ export default function Portfolio() {
                 volunteering in clean up efforts/general aid for my community, or at the local concert venue.
               </p>
               <div className="flex space-x-4 pt-4">
-                <div>
+                <a href="https://github.com/jawshlev" target="_blank" rel="noopener noreferrer">
                     <Button
-                      onClick={() => scrollToSection("contact")}
                       variant="outline"
                       size="icon"
                       data-cursor="link"
@@ -189,10 +188,9 @@ export default function Portfolio() {
                     >
                       <SiGithub className="h-5 w-5" />
                     </Button>
-                </div>
-                <div>
+                </a>
+                <a href="https://www.linkedin.com/in/josh-levano-746908263/" target="_blank" rel="noopener noreferrer">
                     <Button
-                      onClick={() => scrollToSection("contact")}
                       variant="outline"
                       size="icon"
                       data-cursor="link"
@@ -200,18 +198,18 @@ export default function Portfolio() {
                     >
                       <SiLinkedin className="h-5 w-5" />
                     </Button>
-                </div>
-                <div>
-                  <Button
+                </a>
+                <Magnetic>
+                <Button
                     onClick={() => scrollToSection("contact")}
                     variant="outline"
-                    size="icon"
                     data-cursor="link"
-                    className="rounded-full border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent"
+                    className="flex items-center gap-2 rounded-full border border-black/20 text-black hover:bg-black hover:text-white transition-colors bg-transparent px-4 py-2"
                   >
                     <HiOutlineMail className="h-5 w-5" />
+                    joshuadlevano@gmail.com
                   </Button>
-                </div>
+                </Magnetic>
               </div>
             </div>
             <div className="space-y-8">
@@ -228,8 +226,7 @@ export default function Portfolio() {
                   ].map((item, index) => (
                     <div key={index}>
                       <div className="border border-black/10 rounded-lg p-4 hover:border-black/20 transition-colors cursor-pointer">
-                        <h4 className="font-semibold text-base mb-1">{item.skill}</h4>
-                        <p className="text-sm text-black/60">{item.years}</p>
+                        <h2 className="font-semibold text-base mb-1" data-cursor="text">{item.skill}</h2>
                       </div>
                     </div>
                   ))}
@@ -237,24 +234,24 @@ export default function Portfolio() {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="text-2xl font-semibold mb-4" data-cursor="text">
                   Additional Skills
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {[
                     "Python",
-                    "PostgreSQL",
-                    "MongoDB",
-                    "AWS",
-                    "Docker",
+                    "C++",
+                    "Firebase",
+                    "Adobe Photoshop",
+                    "Adobe Illustrator",
                     "Git",
                     "Figma",
-                    "Tailwind CSS",
-                    "GraphQL",
+                    "Tailwind",
+                    "React Native",
                     "REST APIs",
                   ].map((skill, index) => (
                     <div key={index}>
-                      <span className="px-3 py-1 bg-black/5 border border-black/10 rounded-full text-sm font-medium hover:bg-black/10 transition-colors cursor-pointer">
+                      <span className="px-3 py-1 bg-black/5 border border-black/10 rounded-full text-sm font-medium hover:bg-black/10 transition-colors cursor-pointer" data-cursor="text">
                         {skill}
                       </span>
                     </div>
@@ -280,23 +277,23 @@ export default function Portfolio() {
               {
                 title: "Refor(me)d",
                 description: "An interactive application that utilizes ML Technologies to produce a portrait of the current user in the form of drag and drop windows that the user can use to manipulate their image.",
-                image: "/placeholder.svg?height=200&width=300",
+                image: "/reformed.png?height=200&width=300",
                 tech: ["Next.js", "Javascript", "TensorFlow"],
                 github: "https://github.com/jawshlev/reformed/",
                 live: "https://jawshlev.github.io/reformed/",
               },
               {
-                title: "Task Management App",
-                description: "A collaborative task management tool with real-time updates and team features.",
-                image: "/placeholder.svg?height=200&width=300",
-                tech: ["React", "Node.js", "Socket.io", "MongoDB"],
+                title: "YELLOWMind Course",
+                description: "A hi-fi mockup of a therapy course made to help those with eating disorders and body dysmorphia. Made for a freelance client.",
+                image: "/YELLOWMindPreview.png?height=200&width=300",
+                tech: ["Figma", "Adobe Photoshop",],
                 github: "#",
                 live: "#",
               },
               {
                 title: "Weather Dashboard",
                 description: "A beautiful weather dashboard with location-based forecasts and interactive maps.",
-                image: "/placeholder.svg?height=200&width=300",
+                image: "/digitalValentine.png?height=200&width=300",
                 tech: ["React", "API Integration", "Chart.js", "Tailwind"],
                 github: "#",
                 live: "#",
@@ -381,69 +378,12 @@ export default function Portfolio() {
                 I'm always interested in new opportunities and exciting projects. Whether you have a question or just
                 want to say hi, feel free to reach out!
               </p>
-              <div className="space-y-6">
-                <Magnetic>
-                  <a href="mailto:joshuadlevano@gmail.com" rel="noopener noreferrer">
-                    <div className="flex items-center space-x-4 cursor-pointer">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                        <HiOutlineMail className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="text-black/80 text-lg">joshuadlevano@gmail.com</span>
-                    </div>
-                  </a>
-                </Magnetic>
-                <Magnetic>
-                  <a href="https://github.com/jawshlev" target="_blank" rel="noopener noreferrer">
-                    <div className="flex items-center space-x-4 cursor-pointer">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                        <SiGithub className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="text-black/80 text-lg">github.com/jawshlev</span>
-                    </div>
-                  </a>
-                </Magnetic>
-                <Magnetic>
-                  <a href="https://www.linkedin.com/in/josh-levano-746908263/" target="_blank" rel="noopener noreferrer">
-                    <div className="flex items-center space-x-4 cursor-pointer">
-                      <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center">
-                        <SiLinkedin className="h-5 w-5 text-white" />
-                      </div>
-                      <span className="text-black/80 text-lg">Josh Levano</span>
-                    </div>
-                  </a>
-                </Magnetic>
-              </div>
+             
             </div>
 
             <Card className="border border-black/10">
               <CardContent className="p-8">
-                <form className="space-y-6">
-                  <div>
-                    <Input placeholder="Your Name" className="border-black/20 focus:border-black transition-colors" />
-                  </div>
-                  <div>
-                    <Input
-                      type="email"
-                      placeholder="Your Email"
-                      className="border-black/20 focus:border-black transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <Textarea
-                      placeholder="Your Message"
-                      rows={5}
-                      className="border-black/20 focus:border-black transition-colors resize-none"
-                    />
-                  </div>
-                  <Magnetic>
-                    <Button
-                      className="w-full bg-black hover:bg-black/90 text-white py-6 text-lg font-medium"
-                      data-cursor="button"
-                    >
-                      Send Message
-                    </Button>
-                  </Magnetic>
-                </form>
+                <EmailForm/>
               </CardContent>
             </Card>
           </div>
